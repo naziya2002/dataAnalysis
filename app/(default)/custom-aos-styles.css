@@ -1,0 +1,6 @@
+.grow {
+    /* Add your specific animation styles here */
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    /* Other animation properties */
+  }
