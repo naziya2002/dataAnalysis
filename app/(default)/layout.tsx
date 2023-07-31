@@ -6,14 +6,17 @@ import AOS from 'aos'
  import 'aos/dist/aos.css'
  import { ToastContainer } from "react-toastify";
  import 'react-toastify/dist/ReactToastify.css';
- 
+ <link rel="stylesheet" href="http://localhost:3000/_next/static/css/app/layout.css?v=1690813228735" as="style" />
+
 import PageIllustration from '@/components/page-illustration'
 import Footer from '@/components/ui/footer'
 
 export default function DefaultLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  linkPrefetch: false,
+
 }) {  
 
   useEffect(() => {
@@ -30,13 +33,7 @@ export default function DefaultLayout({
       <main className="grow">
 
         <PageIllustration />
-        <ToastContainer
-    theme="dark"
-position="top-right"
-autoClose={3000}
-closeOnClick
-pauseOnHover={false}/>
-
+       
 
         {children}
 

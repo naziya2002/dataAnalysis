@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import {toast} from "react-toastify"
 export default function SignUp() {
   const route=useRouter();
+  const [loading,setLoading]=React.useState(false)
   const [user,setUser]=React.useState({
     email:"",
     password:"",
@@ -23,12 +24,15 @@ export default function SignUp() {
   const [buttonDisabled,setButtonDisabled]=React.useState((false))
 const onSignup=async()=>{
   try{
+    setLoading(true)
       const response =await axios.post("/api/users/signup",user)
       console.log("signup sucess",response.data);
       toast.success("signup sucessfull")
-       route.push("/signin")
+      //  route.push("/signin")
   }catch(error:any){
               toast.error(error.message)
+  }finally{
+    setLoading(false)
   }
 
 }
@@ -47,7 +51,7 @@ setButtonDisabled(false);
 
           {/* Page header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h1 className="h1">Welcome. We exist to make entrepreneurship easier.</h1>
+            <h1 className="h1">{loading?"Processing":"SignUp"}</h1>
           </div>
 
           {/* Form */}
@@ -116,7 +120,7 @@ setButtonDisabled(false);
               </div>
             </form>
             <div className="text-gray-400 text-center mt-6">
-              Already using Open PRO? <Link href="/signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Sign in</Link>
+              Already using Open PRO? <Link href="/signin" prefetch={false} className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Sign in</Link>
             </div>
           </div>
 

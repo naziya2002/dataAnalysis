@@ -9,6 +9,7 @@ import Newsletter from '@/components/newsletter'
 import Zigzag from '@/components/zigzag'
 import Testimonials from '@/components/testimonials'
 import { ToastContainer } from 'react-toastify'
+<link rel="stylesheet" href="http://localhost:3000/_next/static/css/app/layout.css?v=1690813228735" as="style" />
 
 export default function Home() {
   return (
